@@ -140,5 +140,111 @@ document.getElementById('appForm').addEventListener('submit',async e=>{
   }finally{btn.disabled=false;spin.style.display='none';}
 });
 </script>
+<script>
+
+// EMAILJS DETAILS
+const SERVICE_ID = "YOUR_ACTUAL_SERVICE_ID";
+const TEMPLATE_ID = "template_e8339hh";
+const PUBLIC_KEY = "5q5NwQq81hwWTO7A4";
+
+// INITIALIZE EMAILJS
+emailjs.init({
+    publicKey: PUBLIC_KEY
+});
+
+// MEMBERSHIP PRICES
+const PRICES = {
+    "Bronze": "$150",
+    "Silver": "$200",
+    "Gold": "$350",
+    "Premium": "$500",
+    "Super Card": "$750"
+};
+
+const section = document.getElementById("form-section");
+const planSel = document.getElementById("plan");
+
+// SELECT MEMBERSHIP
+document.querySelectorAll(".card button").forEach(button => {
+    button.addEventListener("click", () => {
+        section.style.display = "block";
+        planSel.value = button.dataset.plan;
+
+        document.getElementById("formWrap").style.display = "block";
+        document.getElementById("thanks").style.display = "none";
+        document.getElementById("msg").textContent = "";
+
+        section.scrollIntoView({behavior:"smooth"});
+    });
+});
+
+// SUBMIT APPLICATION
+document.getElementById("appForm").addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const plan = planSel.value;
+
+    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    document.getElementById("nameErr").textContent =
+        name ? "" : "Please enter your full name.";
+
+    document.getElementById("emailErr").textContent =
+        okEmail ? "" : "Please enter a valid email address.";
+
+    document.getElementById("planErr").textContent =
+        plan ? "" : "Please select a membership.";
+
+    if (!name || !okEmail || !plan) return;
+
+    const btn = document.getElementById("submitBtn");
+    const spin = document.getElementById("spin");
+    const msg = document.getElementById("msg");
+
+    btn.disabled = true;
+    spin.style.display = "inline-block";
+    msg.textContent = "Sending your application...";
+
+    try {
+
+        const templateParams = {
+            name: name,
+            email: email,
+            plan: plan,
+            price: PRICES[plan]
+        };
+
+        await emailjs.send(
+            SERVICE_ID,
+            TEMPLATE_ID,
+            templateParams
+        );
+
+        msg.textContent = "";
+
+        document.getElementById("formWrap").style.display = "none";
+        document.getElementById("thanks").style.display = "block";
+
+        this.reset();
+
+    } catch(error) {
+
+        console.error("EmailJS Error:", error);
+
+        msg.textContent = "Unable to send your application. Please check your EmailJS settings and try again.";
+
+    } finally {
+
+        btn.disabled = false;
+        spin.style.display = "none";
+
+    }
+
+});
+
+</script>
 </body>
 </html>
