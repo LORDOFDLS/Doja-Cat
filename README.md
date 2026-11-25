@@ -55,7 +55,7 @@ footer{padding:40px 5%;text-align:center;font-size:.85rem;color:#aaa;border-top:
 #privacy p{margin-bottom:12px}
 </style>
 </head>
-<body>
+</body>
 <nav><strong>DOJA CAT</strong><div><a href="#plans">PLANS</a><a href="#privacy">PRIVACY</a></div></nav>
 
 <header class="hero">
