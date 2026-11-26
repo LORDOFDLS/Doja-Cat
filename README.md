@@ -90,8 +90,6 @@ footer{padding:36px 5% calc(36px + env(safe-area-inset-bottom));text-align:cente
 </style>
 </head>
 <body>
-<div class="notice">Independent, unofficial fan project. Not affiliated with or endorsed by Doja Cat or her management.</div>
-
 <nav>
   <strong>DOJA CAT</strong>
   <button class="burger" id="burger" aria-label="Menu">☰</button>
@@ -157,7 +155,7 @@ footer{padding:36px 5% calc(36px + env(safe-area-inset-bottom));text-align:cente
 <script>
 // ===== EmailJS settings =====
 const EMAILJS_PUBLIC_KEY='5q5NwQq81hwWTO7A4';
-const EMAILJS_SERVICE_ID='PASTE_SERVICE_ID';   // e.g. service_abc123
+const EMAILJS_SERVICE_ID='service_lak8oed';
 const EMAILJS_TEMPLATE_ID='template_e8339hh';
 // ============================
 emailjs.init({publicKey:EMAILJS_PUBLIC_KEY});
