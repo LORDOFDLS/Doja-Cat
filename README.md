@@ -149,7 +149,7 @@ footer{padding:36px 5% calc(36px + env(safe-area-inset-bottom));text-align:cente
   <p>You may request deletion of your information at any time by contacting the site owner.</p>
 </section>
 
-<footer>© DOJA CAT Fan Membership. Independent, unofficial fan project, not affiliated with or endorsed by Doja Cat or her management.</footer>
+<footer>© DOJA CAT Fan Membership. Independent.</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
 <script>
